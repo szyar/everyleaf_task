@@ -1,1 +1,18 @@
-Task list screen
+<h1>Tasks List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Detail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.detail %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
