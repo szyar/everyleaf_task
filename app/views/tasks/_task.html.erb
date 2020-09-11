@@ -1,30 +1,28 @@
 <h1><%= header %></h1>
 
+<%= form_with(model: @task, local: true ) do |form| %>
 <% if @task.errors.any? %>
-  <h2>The following errors prevented the task from being saved</h2>
+<div id="error_explanation">
+  <h2><%= @task.errors.count %> There are errors. </h2>
   <ul>
     <% @task.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+    <li><%= msg %></li>
     <% end %>
   </ul>
+</div>
 <% end %>
-
-<%= form_with(model: @task, local: true) do |f| %>
-
-  <p>
-    <%= f.label :name %> <br>
-    <%= f.text_field :name %>
-  </p>
-
-  <p>
-    <%= f.label :detail %> <br>
-    <%= f.text_area :detail %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-
+<div id="wrapper">
+  <div class="task">
+    <%= form.label :name %> <br>
+    <%= form.text_field :name %>
+  </div>
+  <div class="task">
+    <%= form.label :detail %> <br>
+    <%= form.text_area :detail, rows:"4", cols:"25" %>
+  </div>
+  <div class="submit">
+    <%= form.submit %>
+  </div>
+</div>
 <% end %>
-
-<%= link_to 'Home', tasks_path %>
+<div class="btn"><%= link_to'Return to Task List', tasks_path %></div>
