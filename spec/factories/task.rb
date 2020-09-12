@@ -1,15 +1,15 @@
-# The statement "Use FactoryBot"
+# 「FactoryBotを使用します」という記述
 FactoryBot.define do
-  # Name the test data to be created "task"
-  # (If you give a name of test data that matches the name of the class that actually exists, the test data of that class will be created automatically)
+  # 作成するテストデータの名前を「task」とします
+  # （実際に存在するクラス名と一致するテストデータの名前をつければ、そのクラスのテストデータを自動で作成します）
   factory :task do
-    name { 'Default name created by Factory 1' }
-    detail { 'Default detail 1 made by Factory 1' }
+    title { 'Factoryで作ったデフォルトのタイトル１' }
+    content { 'Factoryで作ったデフォルトのコンテント１' }
   end
-  # Name the test data to be created "second_task"
-  # (If you want to name a class that does not exist, optionally specify "Please use test data for this class")
+  # 作成するテストデータの名前を「second_task」とします
+  # （存在しないクラス名の名前をつける場合、オプションで「このクラスのテストデータにしてください」と指定します）
   factory :second_task, class: Task do
-    name { 'Default name created by Factory 2' }
-    detail { 'Default detail 2 made by Factory 2' }
+    title { 'Factoryで作ったデフォルトのタイトル２' }
+    content { 'Factoryで作ったデフォルトのコンテント２' }
   end
 end
