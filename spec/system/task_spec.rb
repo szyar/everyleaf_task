@@ -1,17 +1,27 @@
 require 'rails_helper'
-describe 'task management function', type: :system do
-   describe 'list display function' do
-     context 'When transitioning to the list screen' do
-       it 'A list of created tasks is displayed' do
-         #Create a task for use in testing
-         task = FactoryBot.create(:task, name: 'task')
-         #Transition to task list page
-         visit tasks_path
-         #The character string "task" appears on the visited (transitioned) page (task list page).
-         #have_content Expect (confirm / expect) whether it is included (included)
-         expect(page).to have_content'task'
-         #If the result of expect is true, the test is successful, and if false, the result is output as failure.
+RSpec.describe 'Task management function', type: :system do
+  before do
+    # Create two tasks to use in the task list test in advance
+    FactoryBot.create(:task)
+    FactoryBot.create(:second_task)
+  end
+  
+  describe 'New creation function' do
+    context 'When creating a new task' do
+      it 'The created task is displayed' do
+      end
+    end
+  end
+  describe 'List display function' do
+    context 'When transitioning to the list screen' do
+      it 'The created task list is displayed' do
+      end
+    end
+  end
+  describe 'Detailed display function' do
+     context 'When transitioned to any task details screen' do
+       it 'The content of the relevant task is displayed' do
        end
      end
-   end
+  end
 end
