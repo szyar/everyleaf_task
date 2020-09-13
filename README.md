@@ -2,8 +2,12 @@
 
 <p> This is the task from diver's curriculum. </p>
 
-## Task table
+## Table Schema
 
-### Name: string
+### Task
 
-### Detail: text
+| id | name | detail | created_at | updated_at |
+|----|------|--------|------------|------------|
+|    |      |        |            |            |
+|    |      |        |            |            |
+|    |      |        |            |            |
