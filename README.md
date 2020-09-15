@@ -4,10 +4,18 @@
 
 ## Table Schema
 
+- model name
+  - Task
+
+| column name | data type |
+| ----------- | --------- |
+| name        | string    |
+| detail      | text      |
+
 ### Task
 
-| id | name | detail | created_at | updated_at |
-|----|------|--------|------------|------------|
-|    |      |        |            |            |
-|    |      |        |            |            |
-|    |      |        |            |            |
+| id  | name | detail | created_at | updated_at |
+| --- | ---- | ------ | ---------- | ---------- |
+|     |      |        |            |            |
+|     |      |        |            |            |
+|     |      |        |            |            |
