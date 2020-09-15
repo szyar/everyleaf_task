@@ -8,9 +8,9 @@ describe 'Task model function', type: :model do
       end
     end
     context 'If the task details are empty' do
-      it 'Validation is caught' do
+      it 'Default detail will be added if detail is blank' do
         task = Task.new(name: 'Failure test', detail: '')
-        expect(task).not_to be_valid
+        expect(task).to be_valid
       end
     end
     context 'When the content is described in the task title and details' do
