@@ -13,3 +13,124 @@
  *= require_tree .
  *= require_self
  */
+
+ html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+
+.container {
+  height: 100vh;
+}
+
+div#task_list {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+p.shadow a {
+  text-shadow: 1.5px 1px #ccc;
+}
+
+.task * {
+  font-size: 1.5rem;
+}
+
+.btn {
+  margin-top: 3rem;
+}
+
+.btn a {
+  text-align: center;
+  padding: 1.5rem 5.3rem;
+  background-color: #3691DA;
+  color: #FDFEFE;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn a:hover {
+  color: #154360;
+}
+
+input[type="submit"] {
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  margin-right: 2.5rem;
+  width: 7rem;
+  padding: 1rem 0.5rem;
+  background-color: #3691DA;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+  color: #154360;
+  cursor: pointer;
+}
+
+.submit {
+  width: 21rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Index Page */
+table.table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: 5px;
+}
+
+th {
+  background-color: #3691DA;
+}
+
+th, td {
+  padding: 12px;
+}
+
+td {
+  text-align: left;
+}
+
+tr:hover {
+  background-color: silver;
+}
+
+tr {
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+td.action {
+  text-align: right;
+  width: 3%;
+}
+
+a {
+  text-decoration: none;
+  /* color: #000; */
+}
+
+a:hover {
+  color: #154360;
+}
+
+.task {
+  margin: 1.5rem;
+}

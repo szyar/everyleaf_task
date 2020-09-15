@@ -1,0 +1,26 @@
+<h1><%= header %></h1>
+
+<%= form_with(model: @task, local: true ) do |form| %>
+<% if @task.errors.any? %>
+<div id="error_explanation">
+  <h2><%= @task.errors.count %> There are errors. </h2>
+    <% @task.errors.full_messages.each do |msg| %>
+    <%= msg %>
+    <% end %>
+</div>
+<% end %>
+<div id="wrapper">
+  <div class="task">
+    <%= form.label :name %> <br>
+    <%= form.text_field :name %>
+  </div>
+  <div class="task">
+    <%= form.label :detail %> <br>
+    <%= form.text_area :detail, rows:"4", cols:"25" %>
+  </div>
+  <div class="submit">
+    <%= form.submit %>
+  </div>
+</div>
+<% end %>
+<div class="btn"><%= link_to'Return to Task List', tasks_path %></div>
