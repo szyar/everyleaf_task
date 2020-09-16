@@ -14,7 +14,7 @@
  *= require_self
  */
 
- html {
+html {
   position: relative;
   min-height: 100%;
 }
@@ -29,6 +29,10 @@ body {
 
 .container {
   height: 100vh;
+}
+
+.message {
+  margin-top: 20px;
 }
 
 div#task_list {
@@ -47,6 +51,7 @@ p.shadow a {
 
 .btn {
   margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .btn a {
