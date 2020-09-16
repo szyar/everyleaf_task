@@ -3,12 +3,14 @@
   <div id="task_list">
     <table class="table">
       <tr>
+        <th>ID</th>
         <th>Name</th>
         <th>Detail</th>
         <th colspan=3>Actions</th>
       </tr>
       <% @tasks.each do |task| %>
       <tr>
+        <td><%= task.id %></td>
         <td><%= task.name %></td>
         <td><%= task.detail %></td>
         <td class="action"><%= link_to 'Show', task_path(task) %></td>
