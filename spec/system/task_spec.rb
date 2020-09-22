@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Tasks", type: :feature do
-  
+
   context "Create new task" do
     before(:each) do
       visit new_task_path
@@ -26,6 +26,17 @@ RSpec.feature "Tasks", type: :feature do
     end
     scenario "Task list page is displayed" do
       expect(page).to have_content("Task List")
+    end
+  end
+
+  context 'When tasks are arranged in descending order of creation date and time' do
+    it 'New task is displayed at the top' do
+        FactoryBot.create(:first_task)
+        FactoryBot.create(:second_task)
+        visit tasks_path
+        task_list = Task.all.order(created_at: :desc)
+        task = task_list.first
+        expect(task.name).to eq("Name 2")
     end
   end
 
