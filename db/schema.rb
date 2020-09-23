@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_09_23_141030) do
     t.datetime "updated_at", null: false
     t.datetime "expired_at"
     t.string "status"
-    t.string "priority"
+    t.integer "priority_type"
   end
 
   create_table "users", force: :cascade do |t|

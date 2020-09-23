@@ -3,7 +3,9 @@
   <%= link_to "Sort by creation date",
     sort: "created_at desc" %> |
   <%= link_to "Sort by expiration date",
-    sort: "expired_at desc" %>
+    sort: "expired_at desc" %> |
+  <%= link_to "Sort by priority",
+    sort: "priority_type desc" %>
   <div id="task_list">
     <table class="table">
       <tr>
@@ -12,7 +14,7 @@
         <th class="left">Detail</th>
         <th class="left">Expired at</th>
         <th class="left">Status</th>
-        <th class="left">Priotity</th>
+        <th class="left">Priority</th>
         <th colspan=3>Actions</th>
       </tr>
       <% @tasks.each do |task| %>
@@ -22,7 +24,7 @@
         <td><%= task.detail %></td>
         <td><%= task.expired_at %></td>
         <td><%= task.status %></td>
-        <td><%= task.priority %></td>
+        <td><%= task.priority_type %></td>
         <td class="action"><%= link_to 'Show', task_path(task) %></td>
         <td class="action"><%= link_to 'Edit', edit_task_path(task) %></td>
         <td class="action"><%= link_to 'Delete', task_path(task),

@@ -28,9 +28,8 @@
         options_for_select(["Unstarted", "In Progress", "Completed"]) %>
   </div>
   <div class="task">
-    <%= form.label :priority %> <br>
-    <%= form.select :priority,
-        options_for_select(["High", "Medium", "Low"]) %>
+    <%= form.label :priority_type %> <br>
+    <%= form.select :priority_type, Task.priority_types.keys%>
   </div>
   <div class="submit">
     <%= form.submit %>
