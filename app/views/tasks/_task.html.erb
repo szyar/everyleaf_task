@@ -18,6 +18,10 @@
     <%= form.label :detail %> <br>
     <%= form.text_area :detail, rows:"4", cols:"25" %>
   </div>
+  <div class="task">
+    <%= form.label :expired_at %> <br>
+    <%= form.datetime_select :expired_at %>
+  </div>
   <div class="submit">
     <%= form.submit %>
   </div>
