@@ -54,13 +54,13 @@ p.shadow a {
 }
 
 .btn {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .btn a {
   text-align: center;
-  padding: 1.5rem 5.3rem;
+  padding: 1rem 2rem;
   background-color: #3691DA;
   color: #FDFEFE;
   font-size: 1rem;
