@@ -11,6 +11,7 @@
         <th class="left">Name</th>
         <th class="left">Detail</th>
         <th class="left">Expired at</th>
+        <th class="left">Status</th>
         <th colspan=3>Actions</th>
       </tr>
       <% @tasks.each do |task| %>
@@ -19,6 +20,7 @@
         <td><%= task.name %></td>
         <td><%= task.detail %></td>
         <td><%= task.expired_at %></td>
+        <td><%= task.status %></td>
         <td class="action"><%= link_to 'Show', task_path(task) %></td>
         <td class="action"><%= link_to 'Edit', edit_task_path(task) %></td>
         <td class="action"><%= link_to 'Delete', task_path(task),

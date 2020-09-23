@@ -3,8 +3,12 @@ class TasksController < ApplicationController
   before_action :require_user
 
   def index
-    @tasks = Task.all.order("created_at desc")
-    @tasks = Task.all.order(params[:sort])
+    @sort = params[:sort]
+    if @sort
+      @tasks = Task.all.order(@sort)
+    else
+      @tasks = Task.all.order(created_at: :desc)
+    end
   end
 
   def show
@@ -50,7 +54,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :detail, :expired_at)
+    params.require(:task).permit(:name, :detail, :expired_at, :status)
   end
 
 end

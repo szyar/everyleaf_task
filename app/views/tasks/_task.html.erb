@@ -22,6 +22,11 @@
     <%= form.label :expired_at %> <br>
     <%= form.datetime_select :expired_at %>
   </div>
+  <div class="task">
+    <%= form.label :status %> <br>
+    <%= form.select :status,
+        options_for_select(["Unstarted", "In Progress", "Completed"]) %>
+  </div>
   <div class="submit">
     <%= form.submit %>
   </div>
