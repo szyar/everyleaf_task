@@ -2,9 +2,12 @@
   <h1>Task List</h1>
 
   <h2>
-  <%= form_tag(search_path, :method => "get") do %>
+  <%= form_tag(search_path, method: "get") do %>
     <%= search_field_tag :search, params[:search],
-      placeholder: "Name or Status or Both" %>
+      placeholder: "Search by Name" %>
+    <%# <%= select :search, params[:search],
+        options_for_select(["None", "Unstarted", "In Progress",
+        "Completed"]) %>
     <%= button_tag "Search" %>
   <% end %>
   </h2>
