@@ -108,12 +108,9 @@ th {
   background-color: #3691DA;
 }
 
-th, td {
-  padding: 12px;
-}
-
-td {
+th.left, td {
   text-align: left;
+  padding: 12px;
 }
 
 tr:hover {
