@@ -1,5 +1,14 @@
 <div class="container">
   <h1>Task List</h1>
+
+  <h2>
+  <%= form_tag(search_path, :method => "get") do %>
+    <%= search_field_tag :search, params[:search],
+      placeholder: "Name or Status or Both" %>
+    <%= button_tag "Search" %>
+  <% end %>
+  </h2>
+
   <%= link_to "Sort by creation date",
     sort: "created_at desc" %> |
   <%= link_to "Sort by expiration date",

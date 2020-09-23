@@ -11,6 +11,10 @@ class TasksController < ApplicationController
     end
   end
 
+  def search
+    
+  end
+
   def show
   end
 
