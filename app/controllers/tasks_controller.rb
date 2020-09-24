@@ -5,9 +5,9 @@ class TasksController < ApplicationController
   def index
     @sort = params[:sort]
     if @sort
-      @tasks = Task.all.order(@sort)
+      @tasks = Task.all.order(@sort).paginate(page: params[:page], per_page: 5)
     else
-      @tasks = Task.all.order(created_at: :desc)
+      @tasks = Task.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     end
   end
 
@@ -20,7 +20,7 @@ class TasksController < ApplicationController
 
     elsif @status_param.present? && @name_param.blank?
       @results = Task.all.where("lower(status) LIKE ?", "%#{@status_param}%")
-      
+
     elsif @name_param.present? && @status_param.present?
       @results = Task.all.where("lower(name) LIKE ? AND lower(status) LIKE ?",
                                 "%#{@name_param}%", "%#{@status_param}%")

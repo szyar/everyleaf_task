@@ -51,5 +51,7 @@
   <%= link_to 'LogOut', logout_path,
     method: :delete %>
 
-
+  <h3>
+    <%= will_paginate @tasks %>
+  </h3>
 </div>
