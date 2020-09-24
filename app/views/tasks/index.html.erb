@@ -5,8 +5,8 @@
   <%= form_tag(search_path, method: "get") do %>
     <%= search_field_tag :search_name, params[:search_name],
       placeholder: "Search by Name" %>
-    <%= search_field_tag :search_status, params[:search_status],
-      placeholder: "Search by Status" %>
+    <%= select_tag :search_status,
+        options_for_select(["", "Unstarted", "In Progress", "Completed"]) %>
     <%= button_tag "Search" %>
   <% end %>
   </h2>
