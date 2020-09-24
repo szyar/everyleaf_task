@@ -12,18 +12,8 @@ class TasksController < ApplicationController
   end
 
   def search
-    @name_param = params[:search_name].to_s.downcase
-    @status_param = params[:search_status].to_s.downcase
-
-    if @name_param.present? && @status_param.blank?
-      @results = Task.all.where("lower(name) LIKE ?", "%#{@name_param}%")
-
-    elsif @status_param.present? && @name_param.blank?
-      @results = Task.all.where("lower(status) LIKE ?", "%#{@status_param}%")
-
-    elsif @name_param.present? && @status_param.present?
-      @results = Task.all.where("lower(name) LIKE ? AND lower(status) LIKE ?",
-                                "%#{@name_param}%", "%#{@status_param}%")
+    if params[:search_name].present? || params[:search_status].present?
+      @results = Task.search(params[:search_name], params[:search_status])
     else
       redirect_to tasks_path
     end
