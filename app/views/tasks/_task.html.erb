@@ -24,8 +24,7 @@
   </div>
   <div class="task">
     <%= form.label :status %> <br>
-    <%= form.select :status,
-        options_for_select(["Unstarted", "In Progress", "Completed"]) %>
+    <%= form.select :status, $statuses %>
   </div>
   <div class="task">
     <%= form.label :priority_type %> <br>
