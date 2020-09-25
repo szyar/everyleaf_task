@@ -28,7 +28,7 @@ describe 'Task model function', type: :model do
       it 'Search by name passes' do
         tasks = Task.search('Name 1', '')
         tasks.each do |task|
-        expect(task.name).to eq('Name 1')
+          expect(task.name).to eq('Name 1')
         end
       end
     end
@@ -36,7 +36,7 @@ describe 'Task model function', type: :model do
       it 'Search by status passes' do
         tasks = Task.search('', 'Unstarted')
         tasks.each do |task|
-        expect(task.status).to eq('Unstarted')
+          expect(task.status).to eq('Unstarted')
         end
       end
     end
@@ -44,8 +44,8 @@ describe 'Task model function', type: :model do
       it 'Search by name and status passes' do
         tasks = Task.search('Name 1', 'Unstarted')
         tasks.each do |task|
-        expect(task.name).to eq('Name 1')
-        expect(task.status).to eq('Unstarted')
+          expect(task.name).to eq('Name 1')
+          expect(task.status).to eq('Unstarted')
         end
       end
     end

@@ -77,27 +77,29 @@ RSpec.feature "Tasks", type: :feature do
       fill_in "Password", with: "batman"
       within("form") do
         click_button "Log In"
-        visit tasks_path
         FactoryBot.create(:first_task)
         FactoryBot.create(:second_task)
+        visit tasks_path
       end
     end
     it "Search by name passes" do
-      fill_in "search_name", with: "Name 1"
-      click_button "Search"
-      expect(page).to have_content("Name 1")
+      tasks = Task.search('Name 1', '')
+      tasks.each do |task|
+        expect(task.name).to eq('Name 1')
+      end
     end
     it "Search by status passes" do
-      select('Unstarted', from: 'search_status')
-      click_button "Search"
-      expect(page).to have_content("Unstarted")
+      tasks = Task.search('', 'Unstarted')
+      tasks.each do |task|
+        expect(task.status).to eq('Unstarted')
+      end
     end
     it "Search by both name and status passes" do
-      fill_in "search_name", with: "Name 1"
-      select('Unstarted', from: 'search_status')
-      click_button "Search"
-      expect(page).to have_content("Name 1")
-      expect(page).to have_content("Unstarted")
+      tasks = Task.search('Name 1', 'Unstarted')
+      tasks.each do |task|
+        expect(task.name).to eq('Name 1')
+        expect(task.status).to eq('Unstarted')
+      end
     end
   end
 
