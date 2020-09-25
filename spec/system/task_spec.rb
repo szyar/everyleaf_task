@@ -59,4 +59,15 @@ RSpec.feature "Tasks", type: :feature do
     end
   end
 
+  context 'When registering a new task, can also register the status' do
+    it 'Status is displayed' do
+        FactoryBot.create(:first_task)
+        FactoryBot.create(:second_task)
+        visit tasks_path
+        task_list = Task.all
+        task = task_list.first
+        expect(task.status).to eq("Unstarted")
+    end
+  end
+
 end
