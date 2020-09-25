@@ -4,6 +4,7 @@ FactoryBot.define do
     detail { 'Detail 1' }
     expired_at { '2020-09-26 19:32:00'}
     status { 'Unstarted' }
+    priority_type { 'Low' }
   end
 
   factory :second_task, class: Task do
@@ -11,5 +12,6 @@ FactoryBot.define do
     detail { 'Detail 2' }
     expired_at { '2020-09-27 19:32:00'}
     status { 'Completed' }
+    priority_type { 'High' }
   end
 end
