@@ -4,8 +4,12 @@ RSpec.feature "Tasks", type: :feature do
 
   context "Create new task" do
     before(:each) do
-      visit new_task_path
+      visit root_path
+      fill_in "Username", with: "szyar"
+      fill_in "Password", with: "batman"
       within("form") do
+        click_button "Log In"
+        visit new_task_path
         fill_in "Name", with: "Test Name"
         fill_in "Detail", with: "Test detail"
       end
@@ -22,9 +26,13 @@ RSpec.feature "Tasks", type: :feature do
 
   context "Check Task Lists" do
     before(:each) do
-      visit tasks_path
+      visit root_path
+      fill_in "Username", with: "szyar"
+      fill_in "Password", with: "batman"
     end
     scenario "Task list page is displayed" do
+      click_button "Log In"
+      visit tasks_path
       expect(page).to have_content("Task List")
     end
   end
