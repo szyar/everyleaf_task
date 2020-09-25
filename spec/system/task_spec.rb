@@ -82,17 +82,17 @@ RSpec.feature "Tasks", type: :feature do
         FactoryBot.create(:second_task)
       end
     end
-    it "Search by name completed" do
+    it "Search by name passes" do
       fill_in "search_name", with: "Name 1"
       click_button "Search"
       expect(page).to have_content("Name 1")
     end
-    it "Search by status completed" do
+    it "Search by status passes" do
       select('Unstarted', from: 'search_status')
       click_button "Search"
       expect(page).to have_content("Unstarted")
     end
-    it "Search by both name and status completed" do
+    it "Search by both name and status passes" do
       fill_in "search_name", with: "Name 1"
       select('Unstarted', from: 'search_status')
       click_button "Search"
