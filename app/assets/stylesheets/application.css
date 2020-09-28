@@ -27,6 +27,58 @@ body {
   width: 100%;
 }
 
+/* nav */
+nav {
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.51);
+  background-color: #3691DA;
+  height: 20px;
+  font-size: 1.2rem;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav ul a {
+  list-style: none;
+  text-decoration: none;
+  display: block;
+  color: #000;
+}
+
+li {
+  list-style: none;
+}
+
+nav li a:hover {
+  text-decoration: underline;
+}
+
+#left {
+  float: left;
+  overflow: hidden;
+  width: auto;
+  padding-left: 1.5rem;
+}
+
+.right {
+  float: right;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+nav ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .message {
   margin-top: 30px;
 }

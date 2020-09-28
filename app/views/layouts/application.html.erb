@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <% if logged_in? %>
+      <nav>
+        <ul>
+          <li id="left">
+            <a><%= link_to 'Tasks', tasks_path %></a>
+          </li>
+          <li class="right">
+            <a><%= link_to 'LogOut', logout_path,
+                method: :delete %></a>
+          </li>
+          <li class="right">
+            <a><%= link_to 'New Task', new_task_path %></a>
+          </li>
+          <li class="right">
+            <a><%= link_to 'Users', users_path %></a>
+          </li>
+        </ul>
+      </nav>
+    <% end %>
+
     <% flash.each do |name, msg| %>
       <div class="message">
         <%= msg %>
