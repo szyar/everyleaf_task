@@ -1,6 +1,6 @@
 <div class="container">
   <h1>User List</h1>
-  
+
   <div id="task_list">
     <table class="table">
       <tr>
@@ -21,4 +21,7 @@
       <% end %>
     </table>
   </div>
+  <h3>
+    <%= will_paginate @users %>
+  </h3>
 </div>
