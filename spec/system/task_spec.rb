@@ -10,17 +10,19 @@ RSpec.feature "Tasks", type: :feature do
       within("form") do
         click_button "Log In"
         visit new_task_path
-        fill_in "Name", with: "Test Name"
-        fill_in "Detail", with: "Test detail"
       end
     end
-    it "New task is registered" do
-      click_button "Create Task"
-      expect(page).to have_content("Task Created")
+    it "New task is registered with deadline" do
+      FactoryBot.create(:first_task)
+      task = Task.first
+      visit task_path(task)
+      expect(page).to have_content("September 26, 2020 19:32")
     end
     it "The registered task is displayed" do
-      click_button "Create Task"
-      expect(page).to have_content("Test Name")
+      FactoryBot.create(:first_task)
+      task = Task.first
+      visit task_path(task)
+      expect(page).to have_content("Name 1")
     end
   end
 
@@ -48,7 +50,7 @@ RSpec.feature "Tasks", type: :feature do
     end
   end
 
-  context 'When tasks are arranged in descending order of expiration date and time' do
+  context 'Check sorting by deadline' do
     it 'Task with later date is displayed at the top' do
         FactoryBot.create(:first_task)
         FactoryBot.create(:second_task)
