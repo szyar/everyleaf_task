@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  belongs_to :user
   before_validation :add_default_detail
 
   validates :name, length: { in: 3..90 }
