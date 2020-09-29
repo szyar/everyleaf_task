@@ -20,4 +20,34 @@ describe 'Task model function', type: :model do
       end
     end
   end
+
+  describe 'Searching test' do
+    FactoryBot.create(:first_task)
+    FactoryBot.create(:second_task)
+    context 'Search by name' do
+      it 'Search by name passes' do
+        tasks = Task.search('Name 1', '')
+        tasks.each do |task|
+          expect(task.name).to eq('Name 1')
+        end
+      end
+    end
+    context 'Search by status' do
+      it 'Search by status passes' do
+        tasks = Task.search('', 'Unstarted')
+        tasks.each do |task|
+          expect(task.status).to eq('Unstarted')
+        end
+      end
+    end
+    context 'Search by both name and status' do
+      it 'Search by name and status passes' do
+        tasks = Task.search('Name 1', 'Unstarted')
+        tasks.each do |task|
+          expect(task.name).to eq('Name 1')
+          expect(task.status).to eq('Unstarted')
+        end
+      end
+    end
+  end
 end

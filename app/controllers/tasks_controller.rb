@@ -1,9 +1,22 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :require_user
-  
+
   def index
-    @tasks = Task.all.order(created_at: :desc)
+    @sort = params[:sort]
+    if @sort
+      @tasks = Task.all.order(@sort).paginate(page: params[:page], per_page: 5)
+    else
+      @tasks = Task.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    end
+  end
+
+  def search
+    if params[:search_name].present? || params[:search_status].present?
+      @results = Task.search(params[:search_name], params[:search_status])
+    else
+      redirect_to tasks_path
+    end
   end
 
   def show
@@ -49,7 +62,8 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :detail)
+    params.require(:task).permit(:name, :detail, :expired_at,
+      :status, :priority_type)
   end
 
 end

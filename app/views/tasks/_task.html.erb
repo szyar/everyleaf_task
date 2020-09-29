@@ -18,9 +18,20 @@
     <%= form.label :detail %> <br>
     <%= form.text_area :detail, rows:"4", cols:"25" %>
   </div>
+  <div class="task">
+    <%= form.label :expired_at %> <br>
+    <%= form.datetime_select :expired_at %>
+  </div>
+  <div class="task">
+    <%= form.label :status %> <br>
+    <%= form.select :status, $statuses %>
+  </div>
+  <div class="task">
+    <%= form.label :priority_type %> <br>
+    <%= form.select :priority_type, Task.priority_types.keys%>
+  </div>
   <div class="submit">
     <%= form.submit %>
   </div>
 </div>
 <% end %>
-<div class="btn"><%= link_to'Return to Task List', tasks_path %></div>

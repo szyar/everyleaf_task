@@ -51,3 +51,8 @@
 * gem '3.0.3'
 * rails, '~> 5.2.4', '>= 5.2.4.3'
 * heroku/7.43.0 linux-x64 node-v12.16.2
+
+
+## Notes for testing with authentication
+1. First I created the user in test database using rails console
+2. Then, I give the username and password at system spec before   section
