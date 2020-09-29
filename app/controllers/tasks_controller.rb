@@ -6,9 +6,9 @@ class TasksController < ApplicationController
   def index
     @sort = params[:sort]
     if @sort
-      @tasks = Task.all.order(@sort).paginate(page: params[:page], per_page: 5)
+      @tasks = current_user.tasks.all.order(@sort).paginate(page: params[:page], per_page: 5)
     else
-      @tasks = Task.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+      @tasks = current_user.tasks.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     end
   end
 
