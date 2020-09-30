@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:notice] = "Your account information was successfully updated"
+      flash[:notice] = "Account information was successfully updated"
       redirect_to @user
     else
       render 'edit'
@@ -39,9 +39,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    session[:user_id] = nil
+    session[:user_id] = nil if @user == current_user
     flash[:notice] = "User account deleted successfully"
-    redirect_to root_path
+    redirect_to users_path
   end
 
   private
