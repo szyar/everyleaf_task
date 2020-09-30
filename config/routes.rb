@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: 'users#index'
-    get '/toggle', to: 'users#toggle'
+    get '/toggle/:id', to: 'users#toggle'
     resources :users, except: [:index]
   end
 
