@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
-  
+
+  namespace :admin do
+    resources :users
+  end
+
   get '/search', to: 'tasks#search'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
