@@ -1,6 +1,11 @@
 <div class="container">
   <h1>Admin Dashboard</h1>
 
+  <h3>
+    <%= will_paginate @users %>
+  </h3>
+
+  <h3>Admins</h3>
   <div id="task_list">
     <table class="table">
       <tr>
@@ -8,7 +13,36 @@
         <th class="left">Username</th>
         <th class="left">Email</th>
         <th class="left">Tasks</th>
-        <th colspan=3>Actions</th>
+        <th colspan=4>Actions</th>
+      </tr>
+      <% @admins.each do |user| %>
+      <tr>
+        <% if logged_in? && (user == current_user ||  current_user.admin?) %>
+          <td><%= user.id %></td>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= user.tasks.count %></td>
+          <td class="action"><%= link_to 'ToUser' %></td>
+          <td class="action"><%= link_to 'Show', user_path(user) %></td>
+          <td class="action"><%= link_to 'Edit', edit_user_path(user) %></td>
+          <td class="action"><%= link_to 'Delete', user_path(user),
+                              method: :delete,
+                              data: {confirm:'Are you sure you want to delete? '} %> </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div> <br>
+
+  <h3>Users</h3>
+  <div id="task_list">
+    <table class="table">
+      <tr>
+        <th class="left">ID</th>
+        <th class="left">Username</th>
+        <th class="left">Email</th>
+        <th class="left">Tasks</th>
+        <th colspan=4>Actions</th>
       </tr>
       <% @users.each do |user| %>
       <tr>
@@ -17,6 +51,7 @@
           <td><%= user.username %></td>
           <td><%= user.email %></td>
           <td><%= user.tasks.count %></td>
+          <td class="action"><%= link_to 'ToAdmin' %></td>
           <td class="action"><%= link_to 'Show', user_path(user) %></td>
           <td class="action"><%= link_to 'Edit', edit_user_path(user) %></td>
           <td class="action"><%= link_to 'Delete', user_path(user),
@@ -27,9 +62,4 @@
       <% end %>
     </table>
   </div>
-  <% if current_user.admin? %>
-    <h3>
-      <%= will_paginate @users %>
-    </h3>
-  <% end %>
 </div>
