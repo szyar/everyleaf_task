@@ -1,6 +1,6 @@
 <h1><%= header %></h1>
 
-<%= form_with(model: @user, url: "/admin/users", method: "post") do |form| %>
+<%= form_with(model: @user, url: "/admin/users", method: "post", local: true) do |form| %>
   <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= @user.errors.count %> There are errors. </h2>

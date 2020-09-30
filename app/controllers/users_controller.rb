@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     @user.destroy
     session[:user_id] = nil if @user == current_user
     flash[:notice] = "User account deleted successfully"
-    redirect_to users_path
+    redirect_to tasks_path
   end
 
   private

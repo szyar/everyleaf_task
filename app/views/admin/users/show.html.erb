@@ -10,8 +10,8 @@
   <% end %>
 </p>
 <%= link_to 'Home', tasks_path %> |
-<%= link_to 'Edit', edit_user_path(@user)%> |
-<%= link_to 'Delete', user_path(@user), method: :delete,
+<%= link_to 'Edit', edit_admin_user_path(@user)%> |
+<%= link_to 'Delete', admin_user_path(@user), method: :delete,
     data: { confirm: "Are you sure?" }%>
 
 <% if @tasks.present? %>

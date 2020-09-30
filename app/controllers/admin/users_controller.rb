@@ -17,6 +17,13 @@ class Admin::UsersController < ApplicationController
     @tasks = @user.tasks.paginate(page: params[:page], per_page: 5)
   end
 
+  def toggle
+    @user = User.find(params[:id])
+    @user.toggle!(:admin)
+    @user.save
+    redirect_to admin_dashboard_path
+  end
+
   def new
     @user = User.new
   end
@@ -27,10 +34,11 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.admin = true
+    @user.save
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Welcome #{@user.admin}, you have successfully signed up"
-      redirect_to admin_user_path(:id)
+      redirect_to admin_user_path(@user.id)
     else
       render 'new'
     end
@@ -49,17 +57,17 @@ class Admin::UsersController < ApplicationController
     @user.destroy
     session[:user_id] = nil if @user == current_user
     flash[:notice] = "User account deleted successfully"
-    redirect_to admin_users_path
+    redirect_to tasks_path
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(:username, :password, :email)
+  def set_user
+    @user = User.find(params[:id])
   end
 
-  def set_user
-    @user = User.find(current_user.id)
+  def user_params
+    params.require(:user).permit(:username, :password, :email)
   end
 
   def require_same_user
