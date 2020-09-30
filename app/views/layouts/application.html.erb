@@ -29,8 +29,13 @@
             <a><%= link_to 'New Task', new_task_path %></a>
           </li>
           <li class="right">
-            <a><%= link_to 'Users', users_path %></a>
+            <a><%= link_to 'My Profile', user_path(current_user.id) %></a>
           </li>
+          <% if current_user.admin? %>
+            <li class="right">
+              <a><%= link_to 'Dashboard', admin_users_path %></a>
+            </li>
+          <% end %>
         </ul>
       </nav>
     <% end %>
