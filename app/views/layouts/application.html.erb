@@ -14,7 +14,9 @@
       <nav>
         <ul>
           <li id="left">
-            <a><%= link_to "#{current_user.username}'s Tasks", tasks_path %></a>
+            <a>
+              <%= link_to "#{current_user.username}'s Tasks", tasks_path %>
+            </a>
           </li>
           <li class="right">
             <a><%= link_to 'LogOut', logout_path,

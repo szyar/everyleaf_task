@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :require_same_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all.paginate(page: params[:page], per_page: 5)
+    @users = User.all.order(created_at: :asc).paginate(page: params[:page], per_page: 5)
   end
 
   def show
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @user
+    if current_user != @user && !current_user.admin?
       flash[:alert] = "You can only check and edit your own account"
       redirect_to tasks_path
     end
