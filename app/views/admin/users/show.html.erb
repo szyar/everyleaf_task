@@ -9,7 +9,7 @@
     <%= "#{@user.tasks.count} tasks" %>
   <% end %>
 </p>
-<%= link_to 'Home', users_path %> |
+<%= link_to 'Home', tasks_path %> |
 <%= link_to 'Edit', edit_user_path(@user)%> |
 <%= link_to 'Delete', user_path(@user), method: :delete,
     data: { confirm: "Are you sure?" }%>

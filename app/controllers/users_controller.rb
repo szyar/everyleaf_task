@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   before_action :require_user, except: [:new, :create]
   before_action :require_same_user, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @users = User.all.order(created_at: :asc).paginate(page: params[:page], per_page: 5)
-  end
+  # def index
+  #   @users = User.all.order(created_at: :asc).paginate(page: params[:page], per_page: 5)
+  # end
 
   def show
     @tasks = @user.tasks.paginate(page: params[:page], per_page: 5)

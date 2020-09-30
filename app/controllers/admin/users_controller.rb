@@ -4,7 +4,12 @@ class Admin::UsersController < ApplicationController
   before_action :require_same_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all.order(created_at: :asc).paginate(page: params[:page], per_page: 5)
+    if !current_user.admin?
+      flash[:alert] = "Admin dashboard can be accessed only by admins"
+      redirect_to tasks_path
+    else
+      @users = User.all.order(created_at: :asc).paginate(page: params[:page], per_page: 5)
+    end
   end
 
   def show

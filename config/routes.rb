@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :users, except: [:new]
 
   namespace :admin do
-    resources :users
+    get '/dashboard', to: 'users#index'
+    resources :users, except: [:index]
   end
 
   get '/search', to: 'tasks#search'
