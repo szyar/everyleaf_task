@@ -117,25 +117,40 @@ RSpec.feature "Users", type: :feature do
     #     expect(page).to have_content("Admin dashboard can be accessed only by admins")
     #   end
     # end
-    context "Admin users can register new users" do
+    # context "Admin users can register new users" do
+    #   before(:each) do
+    #     visit root_path
+    #     within("form") do
+    #       fill_in('Username', with: 'szyar')
+    #       fill_in('Password', with: 'batman')
+    #       click_button "Log In"
+    #     end
+    #   end
+    #   it "New user is created by admin" do
+    #     visit admin_dashboard_path
+    #     within("form") do
+    #       fill_in('Username', with: 'testuser')
+    #       fill_in('Email', with: 'testuser@test.com')
+    #       fill_in('Password', with: 'hellotestuser')
+    #       fill_in('Password confirmation', with: 'hellotestuser')
+    #       click_button "Create User"
+    #     end
+    #     expect(page).to have_content("New user created")
+    #   end
+    # end
+    context "Admin user can access the user details screen" do
       before(:each) do
         visit root_path
         within("form") do
           fill_in('Username', with: 'szyar')
           fill_in('Password', with: 'batman')
-          click_button "Log In"
         end
       end
-      it "New user is created by admin" do
-        visit admin_dashboard_path
-        within("form") do
-          fill_in('Username', with: 'testuser')
-          fill_in('Email', with: 'testuser@test.com')
-          fill_in('Password', with: 'hellotestuser')
-          fill_in('Password confirmation', with: 'hellotestuser')
-          click_button "Create User"
-        end
-        expect(page).to have_content("New user created")
+      it "Show user details screen" do
+        click_button "Log In"
+        user = User.find_by(username: "test")
+        visit user_path(user.id)
+        expect(page).to have_content("Showing User Details")
       end
     end
 
