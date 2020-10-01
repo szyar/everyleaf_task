@@ -53,9 +53,23 @@ RSpec.feature "Users", type: :feature do
       end
       it "Detail screen test pass" do
         click_button "Log In"
-        user = User.find_by(username: 'szyar')
-        visit user_path(user.id)
+        click_link "My Profile"
         expect(page).to have_content("Showing User Details")
+      end
+    end
+    context "Check other user detail screen" do
+      before(:each) do
+        visit root_path
+        within("form") do
+          fill_in('Username', with: 'szyar')
+          fill_in('Password', with: 'batman')
+        end
+      end
+      it "Transition to task list screen" do
+        click_button "Log In"
+        user = User.find_by(username: "test")
+        visit user_path(user.id)
+        expect(page).to have_content("Task List")
       end
     end
   end
