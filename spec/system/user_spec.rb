@@ -43,6 +43,21 @@ RSpec.feature "Users", type: :feature do
         expect(page).to have_content("Logged in successfully")
       end
     end
+    context "Check detail screen" do
+      before(:each) do
+        visit root_path
+        within("form") do
+          fill_in('Username', with: 'szyar')
+          fill_in('Password', with: 'batman')
+        end
+      end
+      it "Detail screen test pass" do
+        click_button "Log In"
+        user = User.find_by(username: 'szyar')
+        visit user_path(user.id)
+        expect(page).to have_content("Showing User Details")
+      end
+    end
   end
 
 end
