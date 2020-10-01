@@ -37,7 +37,7 @@ class Admin::UsersController < ApplicationController
     @user.save
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "Welcome #{@user.admin}, you have successfully signed up"
+      flash[:notice] = "Welcome #{@user.username}, you have successfully signed up"
       redirect_to admin_user_path(@user.id)
     else
       render 'new'
