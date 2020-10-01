@@ -16,9 +16,13 @@ class Admin::UsersController < ApplicationController
 
   def create_by_admin
     @user = User.new(user_params)
-    @user.save
-    flash[:notice] = "New user created"
-    redirect_to admin_dashboard_path
+    if @user.save
+      flash[:notice] = "New user created"
+      redirect_to admin_dashboard_path
+    else
+      flash[:notice] = "Fill all fields"
+      redirect_to admin_dashboard_path
+    end
   end
 
   def show
