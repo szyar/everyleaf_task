@@ -61,5 +61,30 @@
       </tr>
       <% end %>
     </table>
-  </div> <br> <br>
+  </div> <br>
+
+  <h3>Create new user</h3>
+  <%= form_with(model: @user, url: "/admin/createbyadmin", method: "post", local: true ) do |form| %>
+    <div id="wrapper">
+      <div class="task">
+        <%= form.label :username %> <br>
+        <%= form.text_field :username %>
+      </div>
+      <div class="task">
+        <%= form.label :email %> <br>
+        <%= form.email_field :email %>
+      </div>
+      <div class="task">
+        <%= form.label :password %> <br>
+        <%= form.password_field :password %>
+      </div>
+      <div class="task">
+        <%= form.label :password_confirmation %> <br>
+        <%= form.password_field :password_confirmation %>
+      </div>
+      <div class="submit">
+        <%= form.submit %>
+      </div>
+    </div>
+  <% end %>
 </div>

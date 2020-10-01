@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'users#index'
     get '/toggle/:id', to: 'users#toggle'
+    post '/createbyadmin', to: 'users#create_by_admin'
     resources :users, except: [:index]
   end
 

@@ -8,9 +8,16 @@ class Admin::UsersController < ApplicationController
       flash[:alert] = "Admin dashboard can be accessed only by admins"
       redirect_to tasks_path
     else
+      @user = User.new
       @admins = User.where(admin: true).order(created_at: :asc).paginate(page: params[:page], per_page: 5)
       @users = User.where(admin: false).order(created_at: :asc).paginate(page: params[:page], per_page: 5)
     end
+  end
+
+  def create_by_admin
+    @user = User.new(user_params)
+    @user.save
+    redirect_to admin_dashboard_path
   end
 
   def show
