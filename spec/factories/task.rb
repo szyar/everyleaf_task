@@ -5,6 +5,7 @@ FactoryBot.define do
     expired_at { '2020-09-26 19:32:00'}
     status { 'Unstarted' }
     priority_type { 'Low' }
+    user_id { User.first.id }
   end
 
   factory :second_task, class: Task do
@@ -13,5 +14,6 @@ FactoryBot.define do
     expired_at { '2020-09-27 19:32:00'}
     status { 'Completed' }
     priority_type { 'High' }
+    user_id { User.first.id }
   end
 end
