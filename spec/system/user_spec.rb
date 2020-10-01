@@ -138,7 +138,22 @@ RSpec.feature "Users", type: :feature do
     #     expect(page).to have_content("New user created")
     #   end
     # end
-    context "Admin user can access the user details screen" do
+    # context "Admin user can access the user details screen" do
+    #   before(:each) do
+    #     visit root_path
+    #     within("form") do
+    #       fill_in('Username', with: 'szyar')
+    #       fill_in('Password', with: 'batman')
+    #     end
+    #   end
+    #   it "Show user details screen" do
+    #     click_button "Log In"
+    #     user = User.find_by(username: "test")
+    #     visit user_path(user.id)
+    #     expect(page).to have_content("Showing User Details")
+    #   end
+    # end
+    context "Admin user can edit the user's information" do
       before(:each) do
         visit root_path
         within("form") do
@@ -146,11 +161,18 @@ RSpec.feature "Users", type: :feature do
           fill_in('Password', with: 'batman')
         end
       end
-      it "Show user details screen" do
+      it "Edited successfully" do
         click_button "Log In"
         user = User.find_by(username: "test")
-        visit user_path(user.id)
-        expect(page).to have_content("Showing User Details")
+        visit edit_user_path(user.id)
+        within("form") do
+          fill_in('Username', with: 'editbyadmin')
+          fill_in('Email', with: 'test@test.com')
+          fill_in('Password', with: 'hellotest')
+          fill_in('Password confirmation', with: 'hellotest')
+          click_button "Update User"
+        end
+        expect(page).to have_content("Account information was successfully updated")
       end
     end
 
