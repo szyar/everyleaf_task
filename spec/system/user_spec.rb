@@ -89,7 +89,35 @@ RSpec.feature "Users", type: :feature do
   # end
 
   describe "Admin screen test" do
-    context "Be able to access admin screen" do
+    # context "Be able to access admin screen" do
+    #   before(:each) do
+    #     visit root_path
+    #     within("form") do
+    #       fill_in('Username', with: 'szyar')
+    #       fill_in('Password', with: 'batman')
+    #       click_button "Log In"
+    #     end
+    #   end
+    #   it "Show Admin Dashboard" do
+    #     click_link "Dashboard"
+    #     expect(page).to have_content("Admin Dashboard")
+    #   end
+    # end
+    # context "General user unable to access admin screen" do
+    #   before(:each) do
+    #     visit root_path
+    #     within("form") do
+    #       fill_in('Username', with: 'test')
+    #       fill_in('Password', with: 'hellotest')
+    #       click_button "Log In"
+    #     end
+    #   end
+    #   it "Redirect to tasks path with message" do
+    #     visit admin_dashboard_path
+    #     expect(page).to have_content("Admin dashboard can be accessed only by admins")
+    #   end
+    # end
+    context "Admin users can register new users" do
       before(:each) do
         visit root_path
         within("form") do
@@ -98,23 +126,16 @@ RSpec.feature "Users", type: :feature do
           click_button "Log In"
         end
       end
-      it "Show Admin Dashboard" do
-        click_link "Dashboard"
-        expect(page).to have_content("Admin Dashboard")
-      end
-    end
-    context "General user unable to access admin screen" do
-      before(:each) do
-        visit root_path
-        within("form") do
-          fill_in('Username', with: 'test')
-          fill_in('Password', with: 'hellotest')
-          click_button "Log In"
-        end
-      end
-      it "Redirect to tasks path with message" do
+      it "New user is created by admin" do
         visit admin_dashboard_path
-        expect(page).to have_content("Admin dashboard can be accessed only by admins")
+        within("form") do
+          fill_in('Username', with: 'testuser')
+          fill_in('Email', with: 'testuser@test.com')
+          fill_in('Password', with: 'hellotestuser')
+          fill_in('Password confirmation', with: 'hellotestuser')
+          click_button "Create User"
+        end
+        expect(page).to have_content("New user created")
       end
     end
 
