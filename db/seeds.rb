@@ -44,3 +44,15 @@ Task.create(name: "Name 9", detail: "Detail 9",
 Task.create(name: "Name 10", detail: "Detail 10",
   expired_at: '2020-10-9 19:32:00', status: "In Progress", priority_type: "High",
   user_id: User.first.id, label_ids: Label.first.id)
+
+User.create(username: 'name1', email:'name1@test.com', password:'helloname1')
+User.create(username: 'name2', email:'name2@test.com', password:'helloname2')
+User.create(username: 'name3', email:'name3@test.com', password:'helloname3')
+User.create(username: 'name4', email:'name4@test.com', password:'helloname4')
+User.create(username: 'name5', email:'name5@test.com', password:'helloname5')
+
+Label.create(name: "Label 1", user_id: User.first.id)
+Label.create(name: "Label 2", user_id: User.first.id)
+Label.create(name: "Label 3", user_id: User.first.id)
+Label.create(name: "Label 4", user_id: User.first.id)
+Label.create(name: "Label 5", user_id: User.first.id)
