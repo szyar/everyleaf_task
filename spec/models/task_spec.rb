@@ -1,5 +1,7 @@
 require 'rails_helper'
-describe 'Task model function', type: :model do
+
+RSpec.describe "Tasks", type: :model do
+# describe 'Task model function', type: :model do
   describe 'Validation test' do
     context 'If the task title is empty' do
       it 'It\'s hard to Validation' do
@@ -9,13 +11,13 @@ describe 'Task model function', type: :model do
     end
     context 'If the task details are empty' do
       it 'Default detail will be added if detail is blank' do
-        task = Task.new(name: 'Failure test', detail: '')
+        task = Task.new(name: 'Detail test', detail: '', user_id: User.first.id)
         expect(task).to be_valid
       end
     end
     context 'When the content is described in the task title and details' do
       it 'Validation passes' do
-        task = Task.new(name: 'Pass', detail: 'Pass test')
+        task = Task.new(name: 'Pass', detail: 'Pass test', user_id: User.first.id)
         expect(task).to be_valid
       end
     end

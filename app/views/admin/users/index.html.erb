@@ -1,0 +1,90 @@
+<div class="container">
+  <h1>Admin Dashboard</h1>
+
+  <h3>
+    <%= will_paginate @users %>
+  </h3>
+
+  <h3>Admins</h3>
+  <div id="task_list">
+    <table class="table">
+      <tr>
+        <th class="left">ID</th>
+        <th class="left">Username</th>
+        <th class="left">Email</th>
+        <th class="left">Tasks</th>
+        <th colspan=4>Actions</th>
+      </tr>
+      <% @admins.each do |user| %>
+      <tr>
+        <% if logged_in? && (user == current_user ||  current_user.admin?) %>
+          <td><%= user.id %></td>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= user.tasks.count %></td>
+          <td class="action"><%= link_to 'MakeUser', admin_path(user) %></td>
+          <td class="action"><%= link_to 'Show', admin_user_path(user) %></td>
+          <td class="action"><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+          <td class="action"><%= link_to 'Delete', admin_user_path(user),
+                              method: :delete,
+                              data: {confirm:'Are you sure you want to delete? '} %> </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div> <br>
+
+  <h3>Users</h3>
+  <div id="task_list">
+    <table class="table">
+      <tr>
+        <th class="left">ID</th>
+        <th class="left">Username</th>
+        <th class="left">Email</th>
+        <th class="left">Tasks</th>
+        <th colspan=4>Actions</th>
+      </tr>
+      <% @users.each do |user| %>
+      <tr>
+        <% if logged_in? && (user == current_user ||  current_user.admin?) %>
+          <td><%= user.id %></td>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= user.tasks.count %></td>
+          <td class="action"><%= link_to 'MakeAdmin', admin_path(user) %></td>
+          <td class="action"><%= link_to 'Show', user_path(user) %></td>
+          <td class="action"><%= link_to 'Edit', edit_user_path(user) %></td>
+          <td class="action"><%= link_to 'Delete', user_path(user),
+                              method: :delete,
+                              data: {confirm:'Are you sure you want to delete? '} %> </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div> <br>
+
+  <h3>Create new user</h3>
+  <%= form_with(model: @user, url: "/admin/createbyadmin", method: "post", local: true ) do |form| %>
+    <div id="wrapper">
+      <div class="task">
+        <%= form.label :username %> <br>
+        <%= form.text_field :username %>
+      </div>
+      <div class="task">
+        <%= form.label :email %> <br>
+        <%= form.email_field :email %>
+      </div>
+      <div class="task">
+        <%= form.label :password %> <br>
+        <%= form.password_field :password %>
+      </div>
+      <div class="task">
+        <%= form.label :password_confirmation %> <br>
+        <%= form.password_field :password_confirmation %>
+      </div>
+      <div class="submit">
+        <%= form.submit %>
+      </div>
+    </div>
+  <% end %>
+</div>

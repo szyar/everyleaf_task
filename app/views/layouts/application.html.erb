@@ -14,7 +14,12 @@
       <nav>
         <ul>
           <li id="left">
-            <a><%= link_to 'Tasks', tasks_path %></a>
+            <%= "(Admin)" if current_user.admin? %>
+          </li>
+          <li id="left">
+            <a>
+              <%= link_to "#{current_user.username}'s Tasks", tasks_path %>
+            </a>
           </li>
           <li class="right">
             <a><%= link_to 'LogOut', logout_path,
@@ -24,8 +29,13 @@
             <a><%= link_to 'New Task', new_task_path %></a>
           </li>
           <li class="right">
-            <a><%= link_to 'Users', users_path %></a>
+            <a><%= link_to 'My Profile', user_path(current_user.id) %></a>
           </li>
+          <% if current_user.admin? %>
+            <li class="right">
+              <a><%= link_to 'Dashboard', admin_dashboard_path %></a>
+            </li>
+          <% end %>
         </ul>
       </nav>
     <% end %>

@@ -1,13 +1,14 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :require_user
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
     @sort = params[:sort]
     if @sort
-      @tasks = Task.all.order(@sort).paginate(page: params[:page], per_page: 5)
+      @tasks = current_user.tasks.all.order(@sort).paginate(page: params[:page], per_page: 5)
     else
-      @tasks = Task.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+      @tasks = current_user.tasks.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     end
   end
 
@@ -28,6 +29,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user = current_user
     if @task.save
       flash[:notice] = "Task Created"
       redirect_to @task
@@ -64,6 +66,13 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :detail, :expired_at,
       :status, :priority_type)
+  end
+
+  def require_same_user
+    if current_user != @task.user && !current_user.admin?
+      flash[:alert] = "You can only edit or delete your own posts"
+      redirect_to @task
+    end
   end
 
 end
