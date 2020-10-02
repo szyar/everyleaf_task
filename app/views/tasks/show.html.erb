@@ -5,6 +5,14 @@
 <p><strong>Expired at: </strong><%= @task.expired_at.to_s(:long) %></p>
 <p><strong>Status: </strong><%= @task.status %></p>
 <p><strong>Priority: </strong><%= @task.priority_type %></p>
+<p>
+  <% if @task.labels.any? %>
+    <strong><em>Labels: </em></strong>
+    <% @task.labels.each do |label| %>
+      <span class="label"><%= label.name %></span>
+    <% end %>
+  <% end %>
+</p>
 <%= link_to 'Home', tasks_path %> |
 <%= link_to 'Edit', edit_task_path(@task)%> |
 <%= link_to 'Delete', task_path(@task), method: :delete,

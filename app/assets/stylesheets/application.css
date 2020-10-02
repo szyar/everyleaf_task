@@ -192,3 +192,11 @@ a:hover {
 .task {
   margin: 1.5rem;
 }
+
+.label {
+  padding: 0.3rem 0.3rem;
+  background-color: #3691DA;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
