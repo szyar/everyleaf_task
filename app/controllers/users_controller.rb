@@ -12,7 +12,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if logged_in?
+      flash[:alert] = "Already Login"
+      redirect_to tasks_path
+    else
+      @user = User.new
+    end
   end
 
   def edit
