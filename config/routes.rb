@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   get '/search', to: 'tasks#search'
+  get '/label/search', to: 'labels#search'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
