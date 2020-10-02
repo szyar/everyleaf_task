@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'users#index'
     get '/toggle/:id', to: 'users#toggle'
     post '/createbyadmin', to: 'users#create_by_admin'
-    resources :users, except: [:index]
+    resources :users, except: [:new, :index]
   end
 
   get '/search', to: 'tasks#search'

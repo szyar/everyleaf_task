@@ -36,25 +36,25 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_dashboard_path
   end
 
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
   def edit
   end
 
-  def create
-    @user = User.new(user_params)
-    @user.admin = true
-    @user.save
-    if @user.save
-      session[:user_id] = @user.id
-      flash[:notice] = "Welcome #{@user.username}, you have successfully signed up"
-      redirect_to admin_user_path(@user.id)
-    else
-      render 'new'
-    end
-  end
+  # def create
+  #   @user = User.new(user_params)
+  #   @user.admin = true
+  #   @user.save
+  #   if @user.save
+  #     session[:user_id] = @user.id
+  #     flash[:notice] = "Welcome #{@user.username}, you have successfully signed up"
+  #     redirect_to admin_user_path(@user.id)
+  #   else
+  #     render 'new'
+  #   end
+  # end
 
   def update
     if @user.update(user_params)
