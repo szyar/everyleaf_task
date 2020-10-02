@@ -66,10 +66,16 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    session[:user_id] = nil if @user == current_user
-    flash[:notice] = "User account deleted successfully"
-    redirect_to admin_dashboard_path
+    @admins = User.where(admin: true)
+    if @admins.count == 1
+      flash[:notice] = "There must be at least one admin user"
+      redirect_to admin_dashboard_path
+    else
+      @user.destroy
+      session[:user_id] = nil if @user == current_user
+      flash[:notice] = "User account deleted successfully"
+      redirect_to admin_dashboard_path
+    end
   end
 
   private
