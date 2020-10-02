@@ -7,6 +7,11 @@ class LabelsController < ApplicationController
     @labels = current_user.labels.all.paginate(page: params[:page], per_page: 5)
   end
 
+  def search
+    @label = Label.find(params[:label_id])
+    @results = @label.tasks
+  end
+
   def show
   end
 

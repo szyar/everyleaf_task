@@ -3,9 +3,9 @@
   <h1>Labels List</h1>
 
   <h2>
-    <%= form_with(model: @labels, url: "/label/search", method: "get", local: true ) do |form| %>
-        <%= form.collection_select :label_id, current_user.labels.order(:name), :id, :name %>
-        <%= form.button "Search" %>
+    <%= form_with(model: @label, url: "/label/search", method: "get", local: true ) do |form| %>
+      <%= form.collection_select(:label_id, current_user.labels.all, :id, :name, { multiple: false }) %>
+      <%= form.button "Search" %>
     <% end %>
   </h2>
 
