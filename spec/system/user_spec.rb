@@ -6,7 +6,7 @@ RSpec.feature "Users", type: :feature do
     context "Register new user" do
       before(:each) do
         visit root_path
-        click_link "Normal user signup"
+        click_link "Signup"
         within("form") do
           fill_in('Username', with: 'John')
           fill_in('Email', with: 'john@test.com')
