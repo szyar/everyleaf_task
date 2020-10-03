@@ -30,6 +30,11 @@
     <%= form.label :priority_type %> <br>
     <%= form.select :priority_type, Task.priority_types.keys%>
   </div>
+  <div class="task">
+    <%= form.collection_check_boxes :label_ids, current_user.labels.all, :id, :name do |lb| %>
+      <% lb.label {lb.check_box + lb.text } %>
+    <% end %>
+  </div>
   <div class="submit">
     <%= form.submit %>
   </div>

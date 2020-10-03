@@ -65,7 +65,7 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:name, :detail, :expired_at,
-      :status, :priority_type)
+      :status, :priority_type, label_ids: [])
   end
 
   def require_same_user

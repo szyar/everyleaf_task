@@ -6,6 +6,7 @@ FactoryBot.define do
     status { 'Unstarted' }
     priority_type { 'Low' }
     user_id { User.first.id }
+    label_ids { Label.first.id }
   end
 
   factory :second_task, class: Task do
@@ -15,5 +16,6 @@ FactoryBot.define do
     status { 'Completed' }
     priority_type { 'High' }
     user_id { User.first.id }
+    label_ids { Label.first.id }
   end
 end

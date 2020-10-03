@@ -9,11 +9,21 @@
     <%= "#{@user.tasks.count} tasks" %>
   <% end %>
 </p>
+<p>
+  <% if @user.labels.count == 1 %>
+    <%= "#{@user.labels.count} label" %>
+  <% else %>
+    <%= "#{@user.labels.count} labels" %>
+  <% end %>
+</p>
 <%= link_to 'Home', tasks_path %> |
 <%= link_to 'Edit', edit_user_path(@user)%> |
 <%= link_to 'Delete', user_path(@user), method: :delete,
     data: { confirm: "Are you sure?" }%>
 
+<h3>
+  <%= will_paginate @tasks %>
+</h3>
 <% if @tasks.present? %>
   <h2>Tasks</h2>
   <div id="task_list">
@@ -44,7 +54,26 @@
       <% end %>
     </table>
   </div>
-  <h3>
-    <%= will_paginate @tasks %>
-  </h3>
+<% end %>
+
+<% if @labels.present? %>
+  <h2>Labels</h2>
+  <div id="task_list">
+    <table class="table">
+      <tr>
+        <th class="left">Name</th>
+        <th colspan=3>Actions</th>
+      </tr>
+      <% @labels.each do |label| %>
+        <tr>
+          <td><%= label.name %></td>
+          <td class="action"><%= link_to 'Show', label_path(label) %></td>
+          <td class="action"><%= link_to 'Edit', edit_label_path(label) %></td>
+          <td class="action"><%= link_to 'Delete', label_path(label),
+                              method: :delete,
+                              data: {confirm:'Are you sure you want to delete? '} %> </td>
+        </tr>
+      <% end %>
+    </table>
+  </div> <br> <br>
 <% end %>

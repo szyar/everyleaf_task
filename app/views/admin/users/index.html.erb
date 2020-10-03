@@ -13,6 +13,7 @@
         <th class="left">Username</th>
         <th class="left">Email</th>
         <th class="left">Tasks</th>
+        <th class="left">Labels</th>
         <th colspan=4>Actions</th>
       </tr>
       <% @admins.each do |user| %>
@@ -22,6 +23,7 @@
           <td><%= user.username %></td>
           <td><%= user.email %></td>
           <td><%= user.tasks.count %></td>
+          <td><%= user.labels.count %></td>
           <td class="action"><%= link_to 'MakeUser', admin_path(user) %></td>
           <td class="action"><%= link_to 'Show', admin_user_path(user) %></td>
           <td class="action"><%= link_to 'Edit', edit_admin_user_path(user) %></td>
@@ -42,6 +44,7 @@
         <th class="left">Username</th>
         <th class="left">Email</th>
         <th class="left">Tasks</th>
+        <th class="left">Labels</th>
         <th colspan=4>Actions</th>
       </tr>
       <% @users.each do |user| %>
@@ -51,6 +54,7 @@
           <td><%= user.username %></td>
           <td><%= user.email %></td>
           <td><%= user.tasks.count %></td>
+          <td><%= user.labels.count %></td>
           <td class="action"><%= link_to 'MakeAdmin', admin_path(user) %></td>
           <td class="action"><%= link_to 'Show', user_path(user) %></td>
           <td class="action"><%= link_to 'Edit', edit_user_path(user) %></td>

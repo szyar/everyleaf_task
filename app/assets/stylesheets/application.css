@@ -127,8 +127,8 @@ p.shadow a {
 input[type="submit"] {
   margin-top: -1rem;
   margin-bottom: 2rem;
-  margin-right: 2.5rem;
-  width: 7rem;
+  margin-right: 0.9rem;
+  width: 10rem;
   padding: 1rem 0.5rem;
   background-color: #3691DA;
   color: #fff;
@@ -191,4 +191,12 @@ a:hover {
 
 .task {
   margin: 1.5rem;
+}
+
+.label {
+  padding: 0.3rem 0.3rem;
+  background-color: #3691DA;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
 }

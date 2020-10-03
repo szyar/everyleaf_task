@@ -1,0 +1,7 @@
+<h1>Showing Label Details</h1>
+
+<p><strong>Name: </strong><%= @label.name %></p>
+<%= link_to 'Home', labels_path %> |
+<%= link_to 'Edit', edit_label_path(@label)%> |
+<%= link_to 'Delete', label_path(@label), method: :delete,
+    data: { confirm: "Are you sure?" }%>
